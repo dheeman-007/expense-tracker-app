@@ -1,0 +1,27 @@
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+   get '/users/signin', to: 'users#signin'
+   post '/users/signin', to: 'users#create'
+   get '/users/dashboard/:id', to: 'users#dashboard' 
+   get '/users/adminpage', to: 'users#adminpage' 
+   get '/users/edit/:id', to: 'users#edit' 
+   post '/users/edit/:id', to: 'users#update' 
+   get '/users/delete/:id', to: 'users#delete' 
+   get '/users/profile/:id', to: 'users#profile'
+   get '/users/adduser', to: 'users#adduser'
+   post '/users/adduser', to: 'users#createuser'
+   get '/expenses/addexpense/:id', to: 'expenses#addexpense'
+   post '/expenses/addexpense/:id', to: 'expenses#createexpense'
+   get '/expenses/allexpenses/:id', to: 'expenses#allexpenses'
+   get '/expenses/userexpenses/:id', to: 'expenses#userexpenses'
+   get '/expenses/viewexpense/:exp_id', to: 'expenses#viewexpense'
+   get '/viewdoc/:exp_id',to: "expenses#viewdoc"
+   post '/expenses/adminviewexpense/:exp_id', to: 'expenses#addcomment'
+   post '/expenses/userviewexpense/:exp_id', to: 'expenses#addcomment'
+   get '/expenses/approve/:exp_id', to: 'expenses#approve'
+   get '/expenses/reject/:exp_id', to: 'expenses#reject'
+   get '/expenses/userviewexpense/:exp_id', to: 'expenses#userviewexpense'
+   get '/expenses/adminviewexpense/:exp_id', to: 'expenses#adminviewexpense'
+   post '/users/search', to: 'users#search'
+   get '/users/searcheduser/:name', to: 'users#searcheduser'
+end

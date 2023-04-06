@@ -1,0 +1,67 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+<div style='display:flex;  justify-content:center; '>
+    <div style='border-style: solid; padding:50px;'>
+      <h1>User Details</h1>
+      <div style="display:flex;">
+        <button style="margin-right:10px;">
+          <%= link_to 'Back', "/users/adminpage" %>
+        </button>
+      </div>
+      <br>
+      <br>
+      <table>
+      <tr>
+        <th>Employee Id &nbsp; &nbsp; &nbsp;</th>
+        <th>Email &nbsp; &nbsp; &nbsp;</th>
+        <th>Name &nbsp; &nbsp; &nbsp;</th>
+        <th>Department &nbsp; &nbsp; &nbsp;</th>
+        <th>Status &nbsp; &nbsp; &nbsp;</th>
+        <th>View &nbsp; &nbsp; &nbsp;</th>
+        <th>Edit &nbsp; &nbsp; &nbsp;</th>
+        <th>Delete &nbsp; &nbsp; &nbsp;</th>
+        <th>Expense &nbsp; &nbsp; &nbsp;</th>
+      </tr>
+
+      <% @users.each do |user| %>
+        <% if user.isAdmin==false %>
+          <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td><%= user.dept_name %></td>
+          <td><%= user.status %></td>
+          <td>
+            <button>
+              <%= link_to 'View', "/users/profile/#{user.id}" %>
+            </button>
+          </td>
+          <td>
+            <button>
+              <%= link_to 'Edit', "/users/edit/#{user.id}" %>
+            </button>
+          </td>    
+          <td>
+            <button>
+              <%= link_to 'Delete', "/users/delete/#{user.id}",data:{confirm:'Are you sure?'} %>
+            </button>
+          </td>
+          <td>
+            <button>
+              <%= link_to 'Expense', "/expenses/userexpenses/#{user.id}" %>
+            </button>
+          </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

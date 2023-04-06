@@ -1,0 +1,44 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+<div style='display:flex;  justify-content:center; padding-top:150px'>
+    <div style='border-style: solid; padding:50px;'>
+      <h1>Your Expenses</h1>
+        <button>
+          <%= link_to 'Back', "/users/dashboard/#{@user_id}" %>
+        </button>
+        <br>
+        <br>
+        <table>
+          <tr>
+            <th>Invoice &nbsp; &nbsp; &nbsp;</th>
+            <th>Status &nbsp; &nbsp; &nbsp;</th>
+            <th>Description &nbsp; &nbsp; &nbsp;</th>
+            <th>Amount &nbsp; &nbsp; &nbsp;</th>
+            <th>View &nbsp; &nbsp; &nbsp;</th>
+          </tr>
+
+          <% @exps.each do |exp| %>
+          <tr>
+            <td><%= exp.invoice_id %></td>
+            <td><%= exp.status %></td>
+            <td><%= exp.description %></td>
+            <td><%= exp.amount %></td>
+            <td> 
+              <button>
+                  <%= link_to 'View', "/expenses/viewexpense/#{exp.id}" %>
+              </button> 
+            </td>
+          </tr>
+          <% end %>
+
+        </table>
+    </div>
+</div>
